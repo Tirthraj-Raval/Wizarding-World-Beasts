@@ -1,0 +1,35 @@
+<%- include("partials/header"); -%>
+
+
+<form action="/signup" method="post">
+  <section class="login" id="login">
+      <div class="box-container">
+          <div class="box" data-aos="fade-up" data-aos-delay="150">
+              <h3>Sign Up</h3>
+              <div class="details">
+                  <span>Name</span>
+                  <input type="text" placeholder="Enter your name" name="name">
+              </div>
+              <div class="details">
+                  <span>Email</span>
+                  <input type="email" placeholder="Enter your email" name="username">
+              </div>
+              <div class="details">
+                  <span>Password</span>
+                  <input type="password" placeholder="pick a strong password" name="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Create Account</button>
+              <h1>Or continue with these social profile</h1>
+          <div class="share">
+              <a href="/auth/google" class="fab fa-google"></a>
+              <a href="#" class="fab fa-facebook-f"></a>
+              <a href="#" class="fab fa-twitter"></a>
+          </div>
+          <div class="color">
+              <h1>Already a member ? <a href="/login">Login in</a></h1>
+          </div>
+          </div>
+      </section>
+  </form>
+
+<%- include("partials/footer"); -%>
