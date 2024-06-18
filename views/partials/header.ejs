@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Daily Journal</title>
+  <meta charset="utf-8">
+  
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <link href="https://fonts.cdnfonts.com/css/bluu-next" rel="stylesheet">
+
+</head>
+  <!-- <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <% if (typeof user !== 'undefined' && user) { %>
+            <span>Welcome, <%= user.username ? user.username : user.googleDisplayName %></span>
+          <% } %>
+        </div>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="home"><a href="/">HOME</a></li>
+        <li id="about"><a href="/about">ABOUT US</a></li>
+        <li id="contact"><a href="/contact">CONTACT US</a></li>
+        <% if (user && user.role === 'admin') { %>
+          <li id="compose"><a href="/compose">COMPOSE ARTICLE</a></li>
+        <% } %>
+        <li id="favourites"><a href="/favorites">FAVOURITES</a></li>
+        <% if (typeof user !== 'undefined' && user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">LOGOUT</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Sign in</a>
+          </li>
+        <% } %>
+        <li id="search">
+          <form class="navbar-form" action="/search" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="searchTerm">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+  <header class="header">
+    <a data-aos="zoom-in-left" data-aos-delay="150" href="#" class="logo"> <i class="fas fa-paper-plane"></i>Hermione's Magical Escape</a>    
+    
+
+    <div class="icons">
+
+
+        <form action="/search" class="search-form" method="post">
+            <input type="search" name="searchTerm" placeholder="Search Destinations.." id="searchBox">
+            <button type="submit" class="fas fa-search" id="search-btn1"></button>
+        </form>
+        <div class="fas fa-search" id="search-btn"></div>
+        <i class="bi bi-brightness-high-fill" id="toggleDark"></i>
+        <% if (!user) { %>
+          <div class="fas fa-user" id="login-btn"></div>
+        <% } %>
+        <% if (user) { %>
+            <div class="fas fa-sign-out" id="logout-btn"></div>
+        <% } %>
+        <div class="fas fa-bars" id="menu-btn" onclick="toggleMenu()"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <a data-aos="zoom-in-left" data-aos-delay="100" href="/">home</a>
+      <a data-aos="zoom-in-left" data-aos-delay="300" href="/contact">Conatact Us</a>
+      <% if (user && user.role === 'admin') { %>
+      <a data-aos="zoom-in-left" data-aos-delay="400" href="/compose">compose</a>
+      <% } %>
+      <a data-aos="zoom-in-left" data-aos-delay="500" href="/favorites">FAVOURITES</a>
+    </nav>
+
+    <nav class="logout">
+        <!-- <div class="logout"> -->
+            <span>Are you sure you want to log out ?</span>
+            <div class="logout-btn1" id="logout-btn1">
+                <% if(user) { %>
+                <a href="/logout">
+                    <input type="submit" class="btn" id="logoutbtn" value="Confirm and log out">
+                </a>
+                <% } %>
+            </div>
+        <!-- </div> -->
+        </nav>
+
+    <form action="/login" class="login-form" id="login-form" method="POST">
+        <div class="inputBox">
+            <span>Username</span>
+            <input type="text" placeholder="enter your username" name="username">
+        </div>
+
+        <div class="inputBox">
+            <span>Password</span>
+            <input type="password" placeholder="enter your password" name="password">
+        </div>
+
+        <div class="remember">
+            <input type="checkbox" name="" id="login-remember">
+            <label for="login-remember">remember me</label>
+        </div>
+
+        <h3>Forgot Password ? <a href="#" class="forgot-password">Click Here</a></h3>
+
+
+        <input type="submit" class="btn" value="login">
+        <h3>Or continue with these social profile</h3>
+        <div class="share">
+            <a href="/auth/google" class="fab fa-google"></a>
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+        </div>
+        <div class="end">
+                <a href="/signup" class="btn" id="register-btn">Register</a>     
+        </div>
+
+    </form>
+
+    <!-- <a data-aos="zoom-in-left" data-aos-delay="900" href="#book-form" class="btn">book now</a> -->
+</header>
+
+<script>
+    function toggleMenu() {
+        var navbar = document.getElementById("navbar");
+        navbar.classList.toggle("active");
+    }
+</script>
+
+<script>
+let themeBtn = document.querySelector('#toggleDark');
+
+themeBtn.onclick = () => {
+  console.log('Button clicked!');
+  themeBtn.classList.toggle('bi-moon');
+  themeBtn.classList.toggle('active');
+
+  if (themeBtn.classList.contains('bi-moon') && themeBtn.classList.contains('active')) {
+    document.body.classList.add('active');
+    document.body.style.transition = '1s';
+  } else {
+    document.body.classList.remove('active');
+    document.body.style.transition = '1s';
+  }
+};
+
+let navbar = document.querySelector('.navbar');
+let loginForm1=document.querySelector('.login-form');
+let logout = document.querySelector('.fas.fa-sign-out'); // Target the logout button directly
+let logout1=document.querySelector('.logout');
+
+if (logout) {
+  document.querySelector('#logout-btn').onclick = () => {
+    console.log("Button Clicked!");
+    logout1.classList.toggle('active');
+    navbar.classList.remove('active'); // Check if the navbar exists
+    searchForm.classList.remove('active'); // Check if the searchForm exists
+    navbar.classList.remove('active');
+  };
+}
+
+document.querySelector('#menu-btn').onclick = () => {
+  navbar.classList.toggle('active');
+  if (logout) logout1.classList.remove('active'); // Check if the logout button exists
+  loginForm1.classList.remove('active'); // Check if the loginForm exists
+  searchForm.classList.remove('active'); // Check if the searchForm exists
+};
+
+let loginForm = document.querySelector('.fas.fa-user'); // Target the login button directly
+
+if (loginForm) {
+  document.querySelector('#login-btn').onclick = () => {
+    console.log("Button Clicked!");
+    loginForm1.classList.toggle('active');
+    navbar.classList.remove('active'); // Check if the navbar exists
+    searchForm.classList.remove('active'); // Check if the searchForm exists
+  };
+}
+
+let searchForm = document.querySelector('.search-form');
+
+if (searchForm) {
+  document.querySelector('#search-btn').onclick = () => {
+    searchForm.classList.toggle('active');
+    navbar.classList.remove('active'); // Check if the navbar exists
+    logout.classList.remove('active'); // Check if the logout button exists
+    loginForm1.classList.remove('active'); // Check if the loginForm exists
+  };
+}
+</script>
+

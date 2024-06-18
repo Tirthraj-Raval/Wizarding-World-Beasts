@@ -1,0 +1,74 @@
+</div>
+<div class="footer-padding"></div>
+<div class="credit">created by <span>Hermione's Magical Journeys</span> | all rights conserved</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".review-slider", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay:{
+          delay:3000,
+          disableOnInteraction:false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var mySwiper = new Swiper(".slider", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 20,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.2,
+          slideShadows: true,
+        },
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        on: {
+          reachEnd: function () {
+            let activeSlides = this.slides;
+  
+            for (let i = 0; i < activeSlides.length; i++) {
+              activeSlides[i].style.zIndex = "1";
+            }
+  
+            this.slides[this.activeIndex].style.zIndex = "10";
+          },
+        },
+      });
+    });
+  </script>
+  
+
+
+
+<script>
+    AOS.init({
+        duration:800,
+        offset:150,
+    });
+</script>
+
+</div>
+</body>
+</html>
