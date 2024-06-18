@@ -1,0 +1,54 @@
+<%- include("partials/header"); -%>
+
+<section class="destination" id="destination" style="margin-top: 100px;">
+
+
+  <% if (user && user.role === 'admin') { %>
+    <div class="admin-buttons">
+      <a href="/posts/<%= post._id %>/edit" class="btn btn-primary">Edit Post</a>
+      <form action="/posts/<%= post._id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+        <button type="submit" class="btn btn-danger">Delete Post</button>
+      </form>
+    </div>
+  <% } %>
+
+  <div class="heading">
+    <span>Beast Details</span>
+    <h1 style="font-size: 5rem;"><%=title %></h1>
+  </div>
+
+  <% if (post.images && post.images.length > 0) { %>
+  <div class="swiper slider">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="<%=post.firstImg%>" class="firstImg" alt="Post Image" />
+            <% post.images.forEach(function(image) { %>
+          </div>
+          <div class="swiper-slide">
+            <img src="<%=image%>" alt="Post Image" />
+            <% }); %>
+          </div>
+        </div>
+    </div>
+</div>
+<% } %>
+
+
+
+  <div class="content1">
+    <p><%= content %></p>
+    <form action="/addtofavorites" method="POST">
+      <input type="hidden" name="postId" value="<%= post._id %>">
+      <% if (!user || (user && user.role !== 'admin')) { %>
+        <form action="/addtofavorites" method="post">
+          <input type="hidden" name="postId" value="<%= post._id %>">
+          <button type="submit" class="btn btn-primary">Add to Favorites</button>
+        </form>
+      <% } %>    
+      <p class="favorite-message">Post added to favorites</p>
+    </form>
+  </div>
+
+</section>
+
+<%- include("partials/footer"); -%>
