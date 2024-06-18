@@ -1,0 +1,63 @@
+<%- include("partials/header"); -%>
+
+
+<div class="destination">
+  <div class="heading">
+    <h1>Favorites</h1>
+  </div>
+  <div class="box-container">
+          <% if (favorites.length > 0) { %>
+      <% favorites.forEach(function(post) { %>
+        <div class="box">
+          <div class="box" data-aos="fade-up" data-aos-delay="100">
+        <div class="image">
+              <% post.images.forEach(function(image) { %>
+                <img src="<%= image %>" alt="Post Image" class="post-image">
+              <% }) %>
+          <h3><i class="fas fa-map-marker-alt"></i><%= post.title %></h3>
+        </div>
+        <div class="content">
+          <p class="text"><%= post.content.substring(0, 100) + " ..." %></p>
+            <a href="/posts/<%= post._id %>">Read More <i class="fas fa-angle-right"></i></a>
+            <div class="centre" style="margin-top: 4rem; align-items: center; text-align: center;">
+              <form action="/removefromfavorites" method="POST">
+                <input type="hidden" name="favoriteId" value="<%= post._id %>">
+                <button class="btn btn-primary" type="submit" >Remove from Favorites</button>
+              </form>  
+            </div>
+        </div>
+      </div> 
+    </div>
+    <% }); %>
+
+    </div>
+      <% } else { %>
+        <p style="text-align: center; font-size: 3rem; color: var(--cyan);">No favorites yet.</p>
+      <% } %>
+      
+  </div>
+
+
+
+
+
+
+<!-- <% if (favorites.length > 0) { %>
+  <% favorites.forEach(function(post) { %>
+    <div class="post">
+      <h2 class="text"><%= post.title %></h2>
+      <% if (user && user.role !== 'admin') { %>
+        <p class="text"><%= post.content.substring(0, 100) + '...' %><a href="/posts/<%= post._id %>">Read More</a></p>
+      <% } else { %>
+        <p class="text"><%= post.content %></p>
+      <% } %>
+      <form action="/removefromfavorites" method="POST">
+        <input type="hidden" name="favoriteId" value="<%= post._id %>">
+        <button class="btn btn-primary" type="submit">Remove from Favorites</button>
+      </form>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>No favorites yet.</p>
+<% } %> -->
+<%- include("partials/footer"); -%>
