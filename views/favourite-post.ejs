@@ -1,0 +1,27 @@
+<%- include("partials/header"); -%>
+<h1>Favorites</h1>
+
+<% posts.forEach(function(post){ %>
+  <h1><%= post.title %></h1>
+  <% if (user && user.role !== 'admin') { %>
+    <p><%= post.content.substring(0, 100) + " ..." %></p>
+    <a href="/posts/<%= post._id %>" class="btn btn-primary">Read More</a>
+  <% } else { %>
+    <p><%= post.content %></p>
+  <% } %>
+  <form action="/favourites" method="POST">
+    <input type="hidden" name="postTitle" value="<%= post.title %>">
+    <button class="favourite-btn" type="submit">❤️</button>
+  </form>
+<% }) %>
+
+<% if (addedToFavourites) { %>
+  <div id="success-message">Post added to favourites!</div>
+  <script>
+    setTimeout(() => {
+      document.getElementById('success-message').style.display = 'none';
+    }, 3000);
+  </script>
+<% } %>
+
+<%- include("partials/footer"); -%>
