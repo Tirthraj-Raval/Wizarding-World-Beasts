@@ -1,0 +1,97 @@
+<%- include("partials/header"); -%>
+
+
+<section class="edit">
+  <h1 class="text">Edit Post</h1>
+
+  <div class="edit2">
+<form action="/posts/<%= post._id %>/edit" method="post" style="color: var(--textcolor); font-size: 2rem;">
+  <div class="form-group">
+    <label for="updatedTitle">Title</label>
+    <input type="text" class="form-control" id="updatedTitle" name="updatedTitle" value="<%= post.title %>" required>
+  </div>
+  <div class="form-group">
+    <label for="updatedFirstPara">First Short Paragraph</label>
+    <input type="text" class="form-control" id="updatedFirstPara" name="updatedFirstPara" value="<%= post.firstPara %>" required>
+  </div>
+  <div class="form-group">
+    <label for="updatedContent">Content</label>
+    <textarea class="form-control" id="updatedContent" name="updatedContent" style="white-space: pre-wrap;" rows="8" required><%= post.content %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="firstImg">First Image URL</label>
+    <input type="text" class="form-control" id="firstImg" name="firstImg" value="<%= post.firstImg %>" required>
+  </div>
+  <div class="form-group">
+    <label for="imagesURL">Images URL</label>
+    <input type="text" class="form-control" id="imageURL" name="imageURL">
+  </div>
+  <div class="tp">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+</form>
+
+<h3 style="margin-top: 50px; color:white; font-size : 2rem;">Existing Images</h3>
+
+<% if (post.images && post.images.length > 0) { %>
+  <ul>
+    <% post.images.forEach(function(image) { %>
+      <li>
+        <div class="buttons">
+          <form action="/posts/<%= post._id %>/delete-image" method="post">
+            <input type="hidden" name="imageURL" value="<%= image %>">
+            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+          </form>
+  
+        </div>
+        <img src="<%= image %>" class="img" alt="Post Image">
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p style="color:white; font-size : 2rem;">No images found.</p>
+<% } %>
+
+  </div>
+</section>
+
+
+
+
+<!-- 
+<h1 class="text">Edit Post</h1>
+<form action="/posts/<%= post._id %>/edit" method="post">
+  <div class="form-group">
+    <label for="updatedTitle">Title</label>
+    <input type="text" class="form-control" id="updatedTitle" name="updatedTitle" value="<%= post.title %>" required>
+  </div>
+  <div class="form-group">
+    <label for="updatedContent">Content</label>
+    <textarea class="form-control" id="updatedContent" name="updatedContent" style="white-space: pre-wrap;" rows="8" required><%= post.content %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="imageURL">Image URL</label>
+    <input type="text" class="form-control" id="imageURL" name="imageURL">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form> -->
+
+<!-- <h3>Existing Images</h3>
+<% if (post.images && post.images.length > 0) { %>
+  <ul>
+    <% post.images.forEach(function(image) { %>
+      <li>
+        <img src="<%= image %>" alt="Post Image">
+        <form action="/posts/<%= post._id %>/delete-image" method="post">
+          <input type="hidden" name="imageURL" value="<%= image %>">
+          <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No images found.</p>
+<% } %> -->
+
+
+<%- include("partials/footer"); -%>
