@@ -1,0 +1,45 @@
+<%- include("partials/header"); -%>
+
+
+<section class="edit">
+  <h1 class="text">Edit Post</h1>
+
+  <div class="edit2">
+<form action="/compose" method="post" style="color: var(--textcolor); font-size: 2rem;">
+  <div class="form-group">
+    <label for="updatedTitle">Title</label>
+    <input type="text" class="form-control" id="postTitle" name="postTitle" required>
+  </div>
+  <div class="form-group">
+    <label for="updatedFirstPara">Content</label>
+    <input type="text" class="form-control" id="postBody" name="postBody" required>
+  </div>
+  <div class="form-group">
+    <label for="firstImg">Image Link</label>
+    <input type="text" class="form-control" id="firstImg" name="imageLink" required>
+  </div>
+  <div class="tp">
+    <button type="submit" class="btn btn-primary">Publish</button>
+  </div>
+</form>
+  </div>
+</section>
+
+
+<!-- <form action="/compose" method="POST">
+  <div class="form-group">
+    <label for="postTitle">Title</label>
+    <input type="text" class="form-control" id="postTitle" name="postTitle" required>
+  </div>
+  <div class="form-group">
+    <label for="postBody">Content</label>
+    <textarea class="form-control" id="postBody" name="postBody" rows="6" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="imageLink">Image Link</label>
+    <input type="text" class="form-control" id="imageLink" name="imageLink">
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+</form> -->
+
+<%- include("partials/footer"); -%>
