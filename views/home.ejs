@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+<section class="home">
+  <div class="tp">
+    <h1 class="text" id="aboutUs" style="font-size: 5rem; font-weight: bolder; margin-top: -25rem;">About Us</h1>
+    <p class="text" style="font-size: 2rem; margin-left: 15rem; margin-right: 15rem; margin-top: -1rem;">
+      Welcome to our fan-made Wizarding World Encyclopedia Website! Here, you will find comprehensive information about every beast in the enchanting world of Harry Potter. Discover details about their habitats, dietary preferences, cultural significance, physical appearance, and unique powers. We have curated a collection of captivating images for almost every beast, making your browsing experience even more delightful.
+      To enhance your experience, you have the option to save your favorite posts for quick access. Simply create an account or sign in to unlock this feature.</p>
+  </div>
+</section>
+<div class="destination">
+  <div class="heading">
+    <span>Beast Details</span>
+    <h1>Explore the Mysterious & Creepy Animals</h1>
+  </div>
+  <div class="box-container">
+    <% posts.forEach(function(post) { %>
+      <div class="box" data-aos="fade-up" data-aos-delay="100">
+        <div class="image">
+              <% post.images.forEach(function(image) { %>
+                <img src="<%= image %>" alt="Post Image" class="post-image">
+              <% }) %>
+          <h3><i class="fas fa-map-marker-alt"></i><%= post.title %></h3>
+        </div>
+        <div class="content">
+          <p class="text"><%= post.content.substring(0, 100) + " ..." %></p>
+            <a href="/posts/<%=post._id%>">Read More <i class="fas fa-angle-right"></i></a>
+        </div>
+      </div> 
+      <% }); %>
+
+  </div>
+
+<%- include("partials/footer"); -%>
