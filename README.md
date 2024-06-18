@@ -1,6 +1,6 @@
 # Wizarding World Beasts Encyclopedia
 
-<img src="https://github.com/Tirthraj-Raval/Wizarding-World-Beasts/assets/123300261/fa054547-0d19-46e2-a37a-71c80ea7ce3d" alt="Wizarding-World-Beasts" width="600" height="400">
+<img src="https://github.com/Tirthraj-Raval/Wizarding-World-Beasts/assets/123300261/fa054547-0d19-46e2-a37a-71c80ea7ce3d" alt="Wizarding-World-Beasts" width="500" height="500">
 
 ## Overview
 
